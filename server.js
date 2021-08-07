@@ -4,13 +4,14 @@ const app = express()
 const server = http.createServer(app)
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "https://d31ftre6ylgggh.cloudfront.net/",
+		origin: "*",
 		methods: [ "GET", "POST" ]
 	}
 })
 
 
 app.get('/', (request,response)=>{
+	response.header("Access-Control-Allow-Origin", "*")
 	return response.json({message: 'Server'})
 });
 
